@@ -289,7 +289,7 @@ axis[0].set_yscale("log")
 axis[0].set_xticklabels([])
 axis[0].set_ylabel(r"$||\eth^{2}\bar{\sigma}||_{L^{2}}/M$", fontsize=12)
 axis[0].legend(loc="upper left", frameon=True, framealpha=1, fontsize=8)
-axis[0].set_ylim(bottom=1e-2, top=2e-1)
+axis[0].tick_params(labelleft=True, labelright=True)
 
 for i in range(3):
     axis[1].plot(
@@ -312,6 +312,8 @@ axis[1].set_yscale("log")
 axis[1].set_xticklabels([])
 axis[1].set_ylabel(r"$||\eth^{2}\bar{\sigma}||_{L^{2}}/M$", fontsize=12)
 axis[1].legend(loc="upper left", frameon=True, framealpha=1, fontsize=8, ncol=2)
+axis[1].set_ylim(1e-9, 1e-1)
+axis[1].tick_params(labelleft=True, labelright=True)
 
 for i in range(4):
     axis[2].plot(
@@ -326,6 +328,8 @@ axis[2].set_yscale("log")
 axis[2].set_xlabel(r"$\left(u-u_{\mathrm{peak}}\right)/M$", fontsize=12)
 axis[2].set_ylabel(r"$||\eth^{2}\bar{\sigma}||_{L^{2}}/M$", fontsize=12)
 axis[2].legend(loc="upper left", frameon=True, framealpha=1, fontsize=8, ncol=2)
+axis[2].set_ylim(1e-9, 1e-1)
+axis[2].tick_params(labelleft=True, labelright=True)
 
 plt.savefig("plots/term_M0_hierarchy.pdf", bbox_inches="tight")
 
