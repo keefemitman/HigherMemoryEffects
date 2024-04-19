@@ -250,7 +250,7 @@ for L in range(0, abd.ell_max + 1):
             zero_soft_flux_re_M0.data[
                 :, sf.LM_index(L, M, zero_soft_flux_re.ell_min)
             ] *= 0
-            zero_soft_flux_re_M0.data[
+            zero_soft_flux_im_M0.data[
                 :, sf.LM_index(L, M, zero_soft_flux_im.ell_min)
             ] *= 0
 
@@ -278,17 +278,9 @@ axis[0].plot(
 )
 axis[0].plot(
     abd.t[idx1:idx2],
-    np.sqrt(zero_soft_flux_im_M0.norm())[idx1:idx2],
-    lw=1.2,
-    ls=l_styles[1],
-    color=colors[1],
-    label=r"$\mathrm{Im}\left[\eth^{2}\bar{\sigma}\right]$",
-)
-axis[0].plot(
-    abd.t[idx1:idx2],
     np.sqrt(np.sum(abs(terms_M0_sorted[0]) ** 2, axis=1))[idx1:idx2],
     lw=1.2,
-    ls=l_styles[2],
+    ls=l_styles[1],
     color=colors[2],
     label=terms_names_sorted[0],
 )
@@ -308,10 +300,18 @@ for i in range(3):
         color=colors[3 + i],
         label=terms_names_sorted[2 + i],
     )
+axis[1].plot(
+    abd.t[idx1:idx2],
+    np.sqrt(zero_soft_flux_im_M0.norm())[idx1:idx2],
+    lw=1.2,
+    ls=l_styles[3],
+    color=colors[1],
+    label=r"$\mathrm{Im}\left[\eth^{2}\bar{\sigma}\right]$",
+)
 axis[1].set_yscale("log")
 axis[1].set_xticklabels([])
 axis[1].set_ylabel(r"$||\eth^{2}\bar{\sigma}||_{L^{2}}/M$", fontsize=12)
-axis[1].legend(loc="upper left", frameon=True, framealpha=1, fontsize=8)
+axis[1].legend(loc="upper left", frameon=True, framealpha=1, fontsize=8, ncol=2)
 
 for i in range(4):
     axis[2].plot(
